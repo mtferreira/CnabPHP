@@ -16,6 +16,10 @@
         {
             "name": "Matheus Ferreira Silva",
             "email": "santana.matheusferreira@gmail.com"
+        },
+        {
+            "name": "Eduardo Jose Luciano",
+            "email": "edujose35@gmail.com"
         }
     ],
     "require-dev": {

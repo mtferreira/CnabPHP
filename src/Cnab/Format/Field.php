@@ -28,15 +28,15 @@ class Field {
 
 		$p_length = Picture::getLength($this->format);
 		if($p_length > $this->length)
-			throw new \Exception("Picture length of '$this->nome' need more positions than  $pos_start : $pos_end");
+			throw new \Exception("Tamanho do picture '$this->nome' precisa de mais posições do que  $pos_start : $pos_end");
 		else if($p_length < $this->length)
-			throw new \Exception("Picture length of '$this->nome' need less positions than  $pos_start : $pos_end");
+			throw new \Exception("Tamanho do picture '$this->nome' precisa de menos posições do que  $pos_start : $pos_end");
 	}
 
 	public function set($valor)
 	{
 		if($valor === false || is_null($valor))
-			throw new \Exception("'$this->nome' dont be false or null ($this->pos_start, $this->pos_end)");
+			throw new \Exception("'$this->nome' não pode ser falso ou nulo ($this->pos_start, $this->pos_end)");
 			
 		$this->valor_decoded = $valor;
 		
@@ -46,13 +46,13 @@ class Field {
 		}
 		catch(\Exception $e)
 		{
-			trigger_error("Error in field '$this->nome': " . $e->getMessage(), E_USER_NOTICE);
+			trigger_error("Erro no campo '$this->nome': " . $e->getMessage(), E_USER_NOTICE);
 			throw $e; // para exibir o backtrace
 		}
 		
 		$len = strlen($this->valor_encoded);
 		if($len != $this->length)
-			throw new \Exception("'$this->nome' have length '$len', but field need length $this->length");
+			throw new \Exception("'$this->nome' tem tamanho '$len', mas precisa ter tamanho $this->length");
 	}
 	
 	public function getValue()
@@ -68,7 +68,7 @@ class Field {
 	public function getEncoded()
 	{
 		if(is_null($this->valor_encoded))
-			throw new \Exception("'$this->nome' dont be null, need to set any value");
+			throw new \Exception("'$this->nome' não pode ser nulo, atribua algum valor");
 		return $this->valor_encoded;
 	}
 }
