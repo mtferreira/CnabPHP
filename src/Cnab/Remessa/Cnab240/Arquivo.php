@@ -289,7 +289,7 @@ class Arquivo implements \Cnab\Remessa\IArquivo
         $detalhe->segmento_p->data_juros_mora   = $dateVencimento;
 
         if ($boleto['valor_desconto'] > 0) {
-            $detalhe->segmento_p->codigo_desconto_1 = 1; // valor fixo
+            $detalhe->segmento_p->codigo_desconto_1 = $boleto['cod_desc_1'] ? $boleto['cod_desc_1'] : 1; // valor fixo
             $detalhe->segmento_p->data_desconto_1   = $boleto['data_desconto'];
             $detalhe->segmento_p->valor_desconto_1  = $boleto['valor_desconto'];
         } else {
@@ -394,6 +394,17 @@ class Arquivo implements \Cnab\Remessa\IArquivo
             $detalhe->segmento_r->codigo_multa = 0;
             $detalhe->segmento_r->valor_multa  = 0;
             $detalhe->segmento_r->data_multa   = 0;
+        }
+
+        if ($boleto['cod_desc_2']) {
+            $detalhe->segmento_r->codigo_desconto_02 = $boleto['cod_desc_2'];
+            $detalhe->segmento_r->data_desconto_02   = $boleto['data_desconto_2'];
+            $detalhe->segmento_r->valor_desconto_02  = $boleto['valor_desconto_2'];
+        }
+        if ($boleto['cod_desc_3']) {
+            $detalhe->segmento_r->codigo_desconto_03 = $boleto['cod_desc_3'];
+            $detalhe->segmento_r->data_desconto_03   = $boleto['data_desconto_3'];
+            $detalhe->segmento_r->valor_desconto_03  = $boleto['valor_desconto_3'];
         }
 
         $this->detalhes[] = $detalhe;
