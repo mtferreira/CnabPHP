@@ -401,6 +401,7 @@ class Arquivo implements \Cnab\Remessa\IArquivo
             $detalhe->segmento_r->data_desconto_02   = $boleto['data_desconto_2'];
             $detalhe->segmento_r->valor_desconto_02  = $boleto['valor_desconto_2'];
         }
+        
         if ($boleto['cod_desc_3']) {
             $detalhe->segmento_r->codigo_desconto_03 = $boleto['cod_desc_3'];
             $detalhe->segmento_r->data_desconto_03   = $boleto['data_desconto_3'];
